@@ -1,0 +1,37 @@
+{ "signal": [
+  { "name": "Frame" },
+  { "node": ".A...............................................................B" },
+  { "name": "Bit (LSB first)", "phase": 0.15,
+    "wave": "x............=========.=.=.=.=.=.=.=.====.=.====.=.=.===.=.=.x...............",
+    "data": ["0","0","0","0","0","0","0","0",
+             "1","1","1","1","1","1","1","1",
+             "0","0","0","1","1","0","0","0",
+             "1","1","1","0","0","1","1","1"] },
+  { "name": "TSOP (measured)",
+    "wave": "hl.......h...nnnnnnnnnhnhnhnhnhnhnhnhnnnnhnhnnnnhnhnhnnnhnhnhnh|.l.......h.nh" },
+  { "name": "Field", "phase": 0.15,
+    "wave": "x2.......3...4.......5...............6.........7.............8.|.9.......2.3.",
+    "data": ["AGC 9 ms", "4.5 ms", "Address 0x00", "~Address 0xFF",
+             "Command 0x18", "~Command 0xE7", "Stop",
+             "AGC 9 ms", "2.25", "Stop"] },
+  {},
+  { "name": "Bit coding" },
+  { "name": "'1' TSOP",
+    "wave": "hl.......h.......................l" },
+  { "node": ".C.......D.......................E" },
+  { "node": ".F...............................G" },
+  {},
+  { "name": "'0' TSOP",
+    "wave": "hl.......h.......l" },
+  { "node": ".H.......I.......J" },
+  { "node": ".K...............L" }
+],
+  "edge": [
+    "A<->B 108.4 ms – repeat code",
+    "C<->D low 562.5 µs", "D<->E high 1687.5 µs", "F<->G period 2.25 ms",
+    "H<->I low 562.5 µs", "I<->J high 562.5 µs",  "K<->L period 1.125 ms"
+  ],
+  "head": { "text": "NEC protocol, UP pressed: address 0x00, command 0x18 + repeat code" },
+  "foot": { "text": "Frame: 1 tick = 1.125 ms · Bit coding: to scale, 562.5 µs = 8 ticks · TSOP output is active low · gap (|) = 39 ms without signal, shortened" },
+  "config": { "hscale": 1, "skin": "narrow" }
+}
